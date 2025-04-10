@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoonify Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Cartoonify Your Image</h1>
+        <div class="upload-section">
+            <form id="uploadForm" action="/" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" id="fileInput" accept="image/*" required>
+                <button type="submit">Upload & Cartoonify</button>
+            </form>
+        </div>
+        <div class="output-section">
+            {% if input_image %}
+                <div class="image-container">
+                    <div class="image-card">
+                        <h2>Original Image</h2>
+                        <img src="/{{ input_image }}" alt="Original Image">
+                    </div>
+                </div>
+                <div class="image-container">
+                    <div class="image-card">
+                        <h2>Cartoonified Image</h2>
+                        <img src="/{{ output_image }}" alt="Cartoonified Image">
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
